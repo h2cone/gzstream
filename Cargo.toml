@@ -1,0 +1,10 @@
+[package]
+name = "gzstream"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-compression = { version = "0.4.12", features = ["futures-io", "gzip", "tokio"] }
+futures = "0.3.30"
+reqwest = { version = "0.12.7", features = ["stream"] }
+tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
