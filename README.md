@@ -12,7 +12,7 @@ This project demonstrates how to stream process a Gzip compressed file using Rus
 
 0. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/gzstream.git
+    git clone https://github.com/h2cone/gzstream.git
     cd gzstream
     ```
 
