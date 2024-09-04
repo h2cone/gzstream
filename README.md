@@ -4,7 +4,6 @@ This project demonstrates how to stream process a Gzip compressed file using Rus
 
 ## Prerequisites
 
-- Rust (latest stable version)
 - Cargo (Rust package manager)
 - Node.js (for running the preprocessing script)
 
