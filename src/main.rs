@@ -22,7 +22,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let reader = BufReader::new(decoder);
     let mut lines = reader.lines();
     // Output buffer capacity
-    let buf_cap = 10 * 1024 * 1024;
+    let buf_cap = 2 << 12;
     let mut encoder = GzipEncoder::new(Vec::with_capacity(buf_cap));
 
     while let Some(line_res) = lines.next().await {
