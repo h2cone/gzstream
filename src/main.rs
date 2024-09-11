@@ -8,6 +8,13 @@ use tokio::sync::mpsc;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Output buffer capacity
+    let buf_cap = std::env::args()
+        .nth(1)
+        .unwrap_or((2 << 13).to_string())
+        .parse()
+        .unwrap();
+
     let origin = "http://localhost:3000/download?key=sample.vcf.gz";
 
     let stream = reqwest::get(origin)
@@ -20,8 +27,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Decoder also implements AsyncRead
     let reader = BufReader::new(decoder);
     let mut lines = reader.lines();
-    // Output buffer capacity
-    let buf_cap = 2 << 12;
+
     let mut encoder = GzipEncoder::new(Vec::with_capacity(buf_cap));
     // Channel to send chunks to the main thread
     let (tx, mut rx) = mpsc::channel(buf_cap);
